@@ -1,13 +1,25 @@
 {
   "$schema": "https://mintlify.com/docs.json",
-  "theme": "mint",
-  "name": "Mint Starter Kit",
+  "theme": "willow",
+  "name": "CoinPaprika API",
   "colors": {
-    "primary": "#16A34A",
-    "light": "#07C983",
-    "dark": "#15803D"
+    "primary": "#252425",
+    "dark": "#252425"
   },
   "favicon": "/favicon.svg",
+  "integrations": {
+    "ga4": {
+      "measurementId": "G-DO_USTAWIENIA"
+    }
+  },
+  "contextual": {
+    "options": [
+      "copy",
+      "view",
+      "chatgpt",
+      "claude"
+    ]
+  },
   "navigation": {
     "tabs": [
       {
@@ -17,86 +29,161 @@
             "group": "Get Started",
             "pages": [
               "index",
-              "quickstart",
-              "development"
-            ]
-          },
-          {
-            "group": "Essentials",
-            "pages": [
-              "essentials/markdown",
-              "essentials/code",
-              "essentials/images",
-              "essentials/settings",
-              "essentials/navigation",
-              "essentials/reusable-snippets"
+              "faq"
             ]
           }
         ]
       },
       {
         "tab": "API Reference",
+        "openapi": "api-reference/openapi.yml",
         "groups": [
           {
-            "group": "API Documentation",
+            "group": "Getting Started",
             "pages": [
               "api-reference/introduction"
             ]
-          },
-          {
-            "group": "Endpoint Examples",
-            "pages": [
-              "api-reference/endpoint/get",
-              "api-reference/endpoint/create",
-              "api-reference/endpoint/delete",
-              "api-reference/endpoint/webhook"
-            ]
           }
+        ]
+      },
+      {
+        "tab": "On-chain & DEX Data",
+        "pages": [
+          "dexpaprika"
+        ]
+      },
+      {
+        "tab": "Changelog",
+        "pages": [
+          "changelog"
         ]
       }
     ],
     "global": {
       "anchors": [
         {
-          "anchor": "Documentation",
-          "href": "https://mintlify.com/docs",
-          "icon": "book-open-cover"
+          "anchor": "API Playground",
+          "href": "https://docs.coinpaprika.com/api-reference/introduction",
+          "icon": "code"
         },
         {
-          "anchor": "Community",
-          "href": "https://mintlify.com/community",
-          "icon": "slack"
+          "anchor": "Discord Community",
+          "href": "https://discord.gg/DhJge5TUGM",
+          "icon": "discord"
         },
         {
-          "anchor": "Blog",
-          "href": "https://mintlify.com/blog",
-          "icon": "newspaper"
+          "anchor": "CoinPaprika",
+          "href": "https://coinpaprika.com",
+          "icon": "pepper-hot"
+        },
+        {
+          "anchor": "CoinPaprika on X",
+          "href": "https://x.com/coinpaprika",
+          "icon": "x-twitter"
         }
       ]
     }
   },
   "logo": {
-    "light": "/logo/light.svg",
-    "dark": "/logo/dark.svg"
+    "light": "/logo/api_logo.svg",
+    "dark": "/logo/api_logo.svg",
+    "href": "https://coinpaprika.com"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:hi@mintlify.com"
+        "href": "mailto:support@coinpaprika.com"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Dashboard",
-      "href": "https://dashboard.mintlify.com"
+      "label": "Visit CoinPaprika",
+      "href": "https://coinpaprika.com/"
     }
   },
   "footer": {
     "socials": {
-      "x": "https://x.com/mintlify",
-      "github": "https://github.com/mintlify",
-      "linkedin": "https://linkedin.com/company/mintlify"
+      "x": "https://x.com/coinpaprika",
+      "github": "https://github.com/coinpaprika"
+    },
+    "links": [
+      {
+        "header": "Resources",
+        "items": [
+          {
+            "label": "API",
+            "href": "https://coinpaprika.com/api/"
+          },
+          {
+            "label": "API Pricing",
+            "href": "https://coinpaprika.com/api/pricing"
+          },
+          {
+            "label": "Status",
+            "href": "https://status.coinpaprika.com/"
+          }
+        ]
+      },
+      {
+        "header": "Company",
+        "items": [
+          {
+            "label": "About Us",
+            "href": "https://coinpaprika.com/about/"
+          },
+          {
+            "label": "Terms of Use",
+            "href": "https://coinpaprika.com/terms/"
+          },
+          {
+            "label": "Privacy Policy",
+            "href": "https://coinpaprika.com/privacy-policy/"
+          }
+        ]
+      }
+    ]
+  },
+  "api": {
+    "baseUrl": "https://api.coinpaprika.com/v1",
+    "playground": {
+      "mode": "simple"
     }
+  },
+  "seo": {
+    "metatags": {
+      "title": "CoinPaprika API Docs | Cryptocurrency Market Data API",
+      "description": "Official documentation for the CoinPaprika API. Access real-time and historical cryptocurrency market data, including prices, volumes, market caps, and more.",
+      "keywords": "CoinPaprika, CoinPaprika API, cryptocurrency API, crypto market data API, blockchain data API, digital asset data, real-time crypto prices, historical crypto prices, token metadata API, crypto data for developers, REST crypto API, JSON crypto feed, web3 data API",
+      "robots": "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1",
+      "og:type": "website",
+      "og:site_name": "CoinPaprika",
+      "og:title": "CoinPaprika API Docs | Cryptocurrency Market Data API",
+      "og:description": "API reference and guides for accessing real-time & historical crypto data from CoinPaprika.",
+      "og:url": "https://docs.coinpaprika.com",
+      "twitter:card": "summary_large_image",
+      "twitter:title": "CoinPaprika API Docs",
+      "twitter:description": "Explore CoinPaprika's API for real-time cryptocurrency market data."
+    }
+  },
+  "styling": {
+    "eyebrows": "breadcrumbs",
+    "codeblocks": "dark",
+    "fonts": {
+      "heading": {
+        "family": "Inconsolata",
+        "source": "https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"
+      },
+      "body": {
+        "family": "Roboto",
+        "source": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
+      }
+    },
+    "appearance": {
+      "default": "dark"
+    },
+    "css": [
+      "style.css"
+    ]
   }
 }

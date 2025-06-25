@@ -1,0 +1,11 @@
+---
+openapi: get /coins/{coin_id}
+---
+
+## Description
+
+This endpoint provides detailed information for a specific coin, including its name, symbol, rank, and links to its social media and whitepaper.
+
+<Note>
+  The `circulating_supply` field is only available on **paid plans (Starter and above)**. On the Free plan, this field will return `null`.
+</Note>

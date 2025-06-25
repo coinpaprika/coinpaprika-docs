@@ -1,33 +1,103 @@
 ---
-title: 'Introduction'
-description: 'Example section for showcasing API endpoints'
+title: 'Getting Started'
+sidebarTitle: "Introduction"
 ---
 
-<Note>
-  If you're not looking to build API reference documentation, you can delete
-  this section by removing the api-reference folder.
-</Note>
+The CoinPaprika API provides extensive and reliable data for over 50,000 crypto assets, tracking them across more than 350 exchanges. Below are some of the most popular endpoints to get you started.
 
-## Welcome
+<CardGroup cols={3}>
+  <Card 
+    title="Tickers" 
+    icon="tag"
+    href="/api-reference/tickers/get-tickers-for-all-active-coins"
+  >
+    Get the latest price, volume, and market cap data for any coin.
+  </Card>
+  <Card
+    title="Coins"
+    icon="coins"
+    href="/api-reference/coins/list-coins"
+  >
+    Access detailed information about any coin, including social links and whitepapers.
+  </Card>
+  <Card
+    title="Exchanges"
+    icon="store"
+    href="/api-reference/exchanges/list-exchanges"
+  >
+    Retrieve data on all supported exchanges, including their markets and trading volumes.
+  </Card>
+</CardGroup>
 
-There are two ways to build API documentation: [OpenAPI](https://mintlify.com/docs/api-playground/openapi/setup) and [MDX components](https://mintlify.com/docs/api-playground/mdx/configuration). For the starter kit, we are using the following OpenAPI specification.
+## Base URL
 
-<Card
-  title="Plant Store Endpoints"
-  icon="leaf"
-  href="https://github.com/mintlify/starter/blob/main/api-reference/openapi.json"
->
-  View the OpenAPI specification file
-</Card>
+All API endpoints use the following base URL:
+
+```
+https://api.coinpaprika.com/v1
+```
 
 ## Authentication
 
-All API endpoints are authenticated using Bearer tokens and picked up from the specification file.
+Most of our API endpoints are available without an API key. However, for higher rate limits and access to premium features, we recommend using an API key.
 
-```json
-"security": [
-  {
-    "bearerAuth": []
-  }
-]
+<Note>
+  Authentication may be required for certain endpoints in the future as we expand our services.
+</Note>
+
+To authenticate, include your API key as a Bearer token in the `Authorization` header of your request:
+
+```bash
+curl -H "Authorization: Bearer YOUR_API_KEY" "https://api.coinpaprika.com/v1/users/me"
 ```
+<Tip>You can get your API Key by visiting our official website [here](https://coinpaprika.com/api/)</Tip>
+
+## Rate Limits
+
+Our API has the following rate limits based on your subscription plan:
+
+- **Free**: 20,000 requests per month
+- **Starter**: 400,000 requests per month
+- **Pro**: 1,000,000 requests per month
+- **Business**: 5,000,000 requests per month
+- **Ultimate**: 10,000,000 requests per month
+- **Enterprise**: Custom limits
+
+For more details, please see our [pricing page](https://coinpaprika.com/api/pricing).
+
+## SDKs
+
+We offer several SDKs to help you integrate with our API more easily:
+
+<CardGroup cols={2}>
+  <Card
+    title="Go"
+    icon="code-branch"
+    href="https://github.com/coinpaprika/coinpaprika-api-go-client"
+  >
+    Official Go client for the CoinPaprika API.
+  </Card>
+  <Card
+    title="PHP"
+    icon="code-branch"
+    href="https://github.com/coinpaprika/coinpaprika-api-php-client"
+  >
+    Official PHP client for the CoinPaprika API.
+  </Card>
+</CardGroup>
+<CardGroup cols={2}>
+  <Card
+    title="Python"
+    icon="code-branch"
+    href="https://github.com/coinpaprika/coinpaprika-api-python-client"
+  >
+    Official Python client for the CoinPaprika API.
+  </Card>
+  <Card
+    title="TypeScript"
+    icon="code-branch"
+    href="https://github.com/coinpaprika/coinpaprika-api-js-client"
+  >
+    Official TypeScript/JavaScript client for the CoinPaprika API.
+  </Card>
+</CardGroup>

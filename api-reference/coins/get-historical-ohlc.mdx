@@ -1,0 +1,24 @@
+---
+openapi: get /coins/{coin_id}/ohlcv/historical
+---
+
+## Description
+
+This endpoint provides historical OHLCV (Open, High, Low, Close, Volume) data for a specific coin. The amount of historical data and the available intervals are based on your API plan.
+
+<Note>
+  Access to different historical data ranges and intervals is plan-dependent.
+</Note>
+
+### Data Availability by Plan:
+
+| Plan       | Historical Data Depth | Supported `interval` Values                               |
+| :--------- | :-------------------- | :-------------------------------------------------------- |
+| **Free**   | 1 day                 | `24h`                                                     |
+| **Starter**| 1 month               | `24h`                                                     |
+| **Pro**    | 3 months              | `24h`                                                     |
+| **Business**| 1 year                | `1h`, `6h`, `12h`, `24h`                                  |
+| **Ultimate**| Unlimited             | `1h`, `6h`, `12h`, `24h`                                  |
+| **Enterprise**| Unlimited             | `5m`, `15m`, `30m`, `1h`, `6h`, `12h`, `24h`               |
+
+Please refer to our [pricing page](https://coinpaprika.com/api/pricing) for more details on each plan.

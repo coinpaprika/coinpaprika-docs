@@ -3,9 +3,26 @@
   "theme": "willow",
   "name": "CoinPaprika API",
   "colors": {
-    "primary": "#252425",
-    "dark": "#252425"
+    "primary": "#CA312C",
+    "dark": "#CA312C",
+    "light": "#CA312C"
   },
+  "background": {
+  "color": {
+    "light": "#ffffff",  
+    "dark": "#252425"   
+  }
+},
+"fonts": {
+  "body": {
+    "family": "Arial",
+    "weight": 400
+  },
+  "heading": {
+    "family": "Inconsolata",
+    "weight": 700
+  }
+},
   "favicon": "/favicon.svg",
   "integrations": {
     "ga4": {
@@ -130,11 +147,11 @@
         "items": [
           {
             "label": "About Us",
-            "href": "https://coinpaprika.com/about/"
+            "href": "https://coinpaprika.com/about-us/"
           },
           {
             "label": "Terms of Use",
-            "href": "https://coinpaprika.com/terms/"
+            "href": "https://coinpaprika.com/terms-of-use/"
           },
           {
             "label": "Privacy Policy",
@@ -169,21 +186,11 @@
   "styling": {
     "eyebrows": "breadcrumbs",
     "codeblocks": "dark",
-    "fonts": {
-      "heading": {
-        "family": "Inconsolata",
-        "source": "https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap"
-      },
-      "body": {
-        "family": "Roboto",
-        "source": "https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap"
-      }
-    },
     "appearance": {
       "default": "dark"
     },
     "css": [
-      "style.css"
+      "./style.css"
     ]
   }
 }

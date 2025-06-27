@@ -39,26 +39,50 @@
   },
   "navigation": {
     "tabs": [
+              {
+          "tab": "Guides",
+          "groups": [
+            {
+              "group": "Get Started",
+              "pages": [
+                "index",
+                "faq",
+                "api-plans"
+              ]
+            },
+            {
+              "group": "SDKs & Libraries",
+              "pages": [
+                "get-started/sdk-python",
+                "get-started/sdk-javascript",
+                "get-started/sdk-php",
+                "get-started/sdk-go",
+                "get-started/sdk-kotlin",
+                "get-started/sdk-swift"
+              ]
+            }
+          ]
+        },
       {
-        "tab": "Guides",
-        "groups": [
-          {
-            "group": "Get Started",
-            "pages": [
-              "index",
-              "faq"
-            ]
-          }
-        ]
-      },
-      {
-        "tab": "API Reference",
+        "tab": "REST API",
         "openapi": "api-reference/openapi.yml",
         "groups": [
           {
             "group": "Getting Started",
             "pages": [
               "api-reference/introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Streaming API",
+        "asyncapi": "api-reference/streaming-openapi.yml",
+        "groups": [
+          {
+            "group": "Getting Started",
+            "pages": [
+              "api-reference/streaming-introduction"
             ]
           }
         ]

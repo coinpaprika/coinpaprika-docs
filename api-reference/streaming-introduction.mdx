@@ -1,0 +1,184 @@
+---
+title: "Streaming API Introduction"
+description: "Real-time cryptocurrency data via WebSocket"
+---
+
+# CoinPaprika Streaming API
+
+The CoinPaprika Streaming API provides real-time cryptocurrency ticker data via WebSocket connections. Get live price updates, market cap changes, and volume data for your favorite cryptocurrencies.
+
+## Quick Start
+
+Connect to our WebSocket endpoint to start receiving live cryptocurrency data:
+
+```
+wss://streaming.coinpaprika.com/ticks
+```
+
+## Authentication
+
+All requests require authentication using your API key in the `Authorization` header:
+
+```javascript
+const ws = new WebSocket("wss://streaming.coinpaprika.com/ticks", {
+  headers: {
+    Authorization: "YOUR-API-TOKEN",
+  },
+});
+```
+
+## Basic Usage
+
+### 1. Connect and Subscribe
+
+```javascript
+import WebSocket from "ws";
+
+const ws = new WebSocket("wss://streaming.coinpaprika.com/ticks", {
+  headers: {
+    Authorization: "YOUR-API-TOKEN",
+  },
+});
+
+const subscribePayload = {
+  event: "subscribe",
+  ids: ["btc-bitcoin", "eth-ethereum"],
+  quotes: ["BTC", "USD"]
+};
+
+ws.on("open", () => {
+  ws.send(JSON.stringify(subscribePayload));
+});
+```
+
+### 2. Handle Messages
+
+```javascript
+ws.on("message", (data) => {
+  const message = JSON.parse(data.toString());
+  console.log("Received:", message);
+});
+```
+
+### 3. Implement Heartbeat
+
+```javascript
+const pingInterval = 120; // seconds
+let heartbeat;
+
+ws.on("open", () => {
+  heartbeat = setTimeout(() => {
+    ws.terminate();
+  }, 2 * pingInterval * 1000);
+});
+
+ws.on("ping", () => {
+  clearTimeout(heartbeat);
+});
+```
+
+## Supported Operations
+
+### Subscribe to Tickers
+
+Subscribe to receive real-time updates for specific cryptocurrencies:
+
+```json
+{
+  "event": "subscribe",
+  "ids": ["btc-bitcoin", "eth-ethereum"],
+  "quotes": ["USD", "BTC", "ETH"]
+}
+```
+
+### Unsubscribe from Tickers
+
+Stop receiving updates for specific cryptocurrencies:
+
+```json
+{
+  "event": "unsubscribe",
+  "ids": ["btc-bitcoin"]
+}
+```
+
+### Ping/Pong for Connection Health
+
+Keep your connection alive with ping/pong messages:
+
+```json
+{
+  "event": "ping",
+  "reqid": 123
+}
+```
+
+## Message Format
+
+### Currency Data Response
+
+When subscribed, you'll receive real-time updates in this format:
+
+```json
+{
+  "id": "btc-bitcoin",
+  "sym": "BTC",
+  "ts": 1676916987,
+  "quotes": {
+    "USD": {
+      "m": 608286188,
+      "p": 50000.123,
+      "v24h": 801851299.55
+    }
+  }
+}
+```
+
+Where:
+- `id`: CoinPaprika currency ID
+- `sym`: Currency symbol
+- `ts`: Unix timestamp
+- `quotes`: Price data in requested quote currencies
+  - `m`: Market cap
+  - `p`: Current price
+  - `v24h`: 24-hour volume
+
+## Rate Limits and Quotas
+
+- **Quotes per subscription**: Up to 5 quote currencies at once
+- **Supported quotes**: USD, BTC, ETH, BNB, MATIC, SOL
+- **Connection timeout**: 240 seconds without ping/pong
+- **Reconnection**: Automatic reconnection recommended with exponential backoff
+
+## Error Handling
+
+Implement proper error handling and reconnection logic:
+
+```javascript
+ws.on("error", (err) => {
+  console.error("WebSocket error:", err);
+});
+
+ws.on("close", (code, reason) => {
+  console.log(`Connection closed: ${code} - ${reason}`);
+  // Implement reconnection logic here
+});
+```
+
+## Best Practices
+
+1. **Implement heartbeat monitoring** using ping/pong messages
+2. **Handle reconnections** gracefully with exponential backoff
+3. **Subscribe only to needed currencies** to optimize bandwidth
+4. **Store your API token securely** and never expose it in client-side code
+5. **Implement proper error handling** for network issues
+
+## Getting Your API Key
+
+To access the Streaming API, you need a CoinPaprika API key. Visit [CoinPaprika API](https://coinpaprika.com/api/) to get started.
+
+## Support
+
+For technical support or questions about the Streaming API:
+- Email: [support@coinpaprika.com](mailto:support@coinpaprika.com)
+- Discord: [Join our community](https://discord.gg/DhJge5TUGM) 

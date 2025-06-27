@@ -1,0 +1,138 @@
+asyncapi: 2.6.0
+info:
+  title: CoinPaprika Streaming API
+  version: 1.0.0
+  description: |
+    The CoinPaprika async API for real-time cryptocurrency ticker data.
+    
+    Connect to our WebSocket endpoint to receive live price updates for cryptocurrencies.
+  license:
+    name: Apache 2.0
+  contact:
+    url: https://coinpaprika.com
+    email: support@coinpaprika.com
+
+servers:
+  public:
+    url: wss://streaming.coinpaprika.com/ticks
+    protocol: wss
+    description: Production api with ticker data
+    security:
+      - ApiKeyAuth: []
+
+channels:
+  /ticks:
+    description: WebSocket channel for cryptocurrency ticker data
+    publish:
+      operationId: sendMessage
+      summary: Send messages to the API
+      message:
+        $ref: '#/components/messages/operation'
+    subscribe:
+      operationId: processMessage
+      summary: Messages that you receive from the API
+      message:
+        oneOf:
+          - $ref: '#/components/messages/currency'
+          - $ref: '#/components/messages/pong'
+
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: httpApiKey
+      name: Authorization
+      in: header
+      description: API key for authentication
+
+  messages:
+    operation:
+      name: operation
+      title: Subscribe to a topic on a single or multiple currencies
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/operation'
+      examples:
+        - name: Subscribe Example
+          payload:
+            event: subscribe
+            ids: ["btc-bitcoin", "eth-ethereum"]
+            quotes: ["BTC", "USD"]
+
+    currency:
+      name: currency
+      title: Currency data
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/currency'
+
+
+    ping:
+      name: ping
+      title: Ping server to determine whether connection is alive
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/ping'
+      x-response:
+        $ref: '#/components/messages/pong'
+
+    pong:
+      name: pong
+      title: Pong is a response to ping message
+      contentType: application/json
+      payload:
+        $ref: '#/components/schemas/pong'
+
+  schemas:
+    operation:
+      type: object
+      properties:
+        event:
+          type: string
+          enum: [subscribe, unsubscribe]
+        ids:
+          type: array
+          items:
+            type: string
+        quotes:
+          type: array
+          items:
+            type: string
+      additionalProperties: true
+
+    currency:
+      type: object
+      properties:
+        id:
+          type: string
+        sym:
+          type: string
+        ts:
+          type: integer
+        quotes:
+          type: object
+          additionalProperties: true
+      additionalProperties: true
+
+    ping:
+      type: object
+      properties:
+        event:
+          type: string
+          const: ping
+        reqid:
+          type: integer
+          description: Client originated ID reflected in response message
+      required:
+        - event
+      additionalProperties: true
+
+    pong:
+      type: object
+      properties:
+        event:
+          type: string
+          const: pong
+        reqid:
+          type: integer
+          description: Client originated ID reflected in response message
+      additionalProperties: true 

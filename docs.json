@@ -76,18 +76,6 @@
         ]
       },
       {
-        "tab": "Streaming API",
-        "asyncapi": "api-reference/streaming-openapi.yml",
-        "groups": [
-          {
-            "group": "Getting Started",
-            "pages": [
-              "api-reference/streaming-introduction"
-            ]
-          }
-        ]
-      },
-      {
         "tab": "On-chain & DEX Data",
         "pages": [
           "dexpaprika"

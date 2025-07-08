@@ -1,41 +1,53 @@
-asyncapi: 2.6.0
+asyncapi: 3.0.0
 info:
   title: CoinPaprika Streaming API
   version: 1.0.0
-  description: |
+  description: >
     The CoinPaprika async API for real-time cryptocurrency ticker data.
-    
-    Connect to our WebSocket endpoint to receive live price updates for cryptocurrencies.
+
+
+    Connect to our WebSocket endpoint to receive live price updates for
+    cryptocurrencies.
+  contact:
+    url: 'https://coinpaprika.com'
+    email: support@coinpaprika.com
   license:
     name: Apache 2.0
-  contact:
-    url: https://coinpaprika.com
-    email: support@coinpaprika.com
-
 servers:
   public:
-    url: wss://streaming.coinpaprika.com/ticks
+    host: streaming.coinpaprika.com
+    pathname: /ticks
     protocol: wss
     description: Production api with ticker data
     security:
-      - ApiKeyAuth: []
-
+      - $ref: '#/components/securitySchemes/ApiKeyAuth'
 channels:
   /ticks:
-    description: WebSocket channel for cryptocurrency ticker data
-    publish:
-      operationId: sendMessage
-      summary: Send messages to the API
-      message:
+    address: /ticks
+    messages:
+      sendMessage.message:
         $ref: '#/components/messages/operation'
-    subscribe:
-      operationId: processMessage
-      summary: Messages that you receive from the API
-      message:
-        oneOf:
-          - $ref: '#/components/messages/currency'
-          - $ref: '#/components/messages/pong'
-
+      processMessage.message.0:
+        $ref: '#/components/messages/currency'
+      processMessage.message.1:
+        $ref: '#/components/messages/pong'
+    description: WebSocket channel for cryptocurrency ticker data
+operations:
+  sendMessage:
+    action: receive
+    channel:
+      $ref: '#/channels/~1ticks'
+    summary: Send messages to the API
+    messages:
+      - $ref: '#/channels/~1ticks/messages/sendMessage.message'
+  processMessage:
+    action: send
+    channel:
+      $ref: '#/channels/~1ticks'
+    summary: Messages that you receive from the API
+    messages:
+      - $ref: '#/channels/~1ticks/messages/processMessage.message.0'
+      - $ref: '#/channels/~1ticks/messages/processMessage.message.1'
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -43,7 +55,6 @@ components:
       name: Authorization
       in: header
       description: API key for authentication
-
   messages:
     operation:
       name: operation
@@ -55,17 +66,18 @@ components:
         - name: Subscribe Example
           payload:
             event: subscribe
-            ids: ["btc-bitcoin", "eth-ethereum"]
-            quotes: ["BTC", "USD"]
-
+            ids:
+              - btc-bitcoin
+              - eth-ethereum
+            quotes:
+              - BTC
+              - USD
     currency:
       name: currency
       title: Currency data
       contentType: application/json
       payload:
         $ref: '#/components/schemas/currency'
-
-
     ping:
       name: ping
       title: Ping server to determine whether connection is alive
@@ -74,21 +86,21 @@ components:
         $ref: '#/components/schemas/ping'
       x-response:
         $ref: '#/components/messages/pong'
-
     pong:
       name: pong
       title: Pong is a response to ping message
       contentType: application/json
       payload:
         $ref: '#/components/schemas/pong'
-
   schemas:
     operation:
       type: object
       properties:
         event:
           type: string
-          enum: [subscribe, unsubscribe]
+          enum:
+            - subscribe
+            - unsubscribe
         ids:
           type: array
           items:
@@ -98,7 +110,6 @@ components:
           items:
             type: string
       additionalProperties: true
-
     currency:
       type: object
       properties:
@@ -112,7 +123,6 @@ components:
           type: object
           additionalProperties: true
       additionalProperties: true
-
     ping:
       type: object
       properties:
@@ -125,7 +135,6 @@ components:
       required:
         - event
       additionalProperties: true
-
     pong:
       type: object
       properties:
@@ -135,4 +144,4 @@ components:
         reqid:
           type: integer
           description: Client originated ID reflected in response message
-      additionalProperties: true 
+      additionalProperties: true

@@ -104,54 +104,42 @@ This library provides the following Retrofit service interfaces.
 
 ### CoinsService
 Used to fetch coin details and history.
-- `getCoins()`: Lists all available coins.
-- `getCoin(id)`: Retrieves details for a specific coin ID.
-- `getCoinEvents(id)`: Gets events related to a coin.
-- `getCoinExchanges(id)`: Gets exchanges where a coin is listed.
-- `getCoinMarkets(id, quotes)`: Gets market data for a coin.
-- `getCoinTweets(id)`: Gets the latest tweets for a coin.
-- `getCoinOHLCV(id, quotes)`: Gets the latest OHLCV data.
-- `getHistoricalCoinOHLCV(id, start, end, limit, quotes, interval)`: Gets historical OHLCV data.
+- [`getCoins()`](/api-reference/coins/list-coins): Lists all available coins.
+- [`getCoin(id)`](/api-reference/coins/get-coin-by-id): Retrieves details for a specific coin ID.
+- [`getCoinEvents(id)`](/api-reference/coins/get-coin-events-by-coin-id): Gets events related to a coin.
+- [`getCoinExchanges(id)`](/api-reference/coins/get-exchanges-by-coin-id): Gets exchanges where a coin is listed.
+- [`getCoinMarkets(id, quotes)`](/api-reference/coins/get-markets-by-coin-id): Gets market data for a coin.
+- [`getCoinTweets(id)`](/api-reference/coins/get-twitter-timeline-tweets-for-a-coin): Gets the latest tweets for a coin.
+- [`getCoinOHLCV(id, quotes)`](/api-reference/coins/get-ohlc-for-the-last-full-day): Gets the latest OHLCV data.
+- [`getHistoricalCoinOHLCV(...)`](/api-reference/coins/get-historical-ohlc): Gets historical OHLCV data.
 
 ### ExchangesService
 Used to fetch data about exchanges.
-- `getExchanges(quotes)`: Lists all exchanges.
-- `getExchange(id, quotes)`: Retrieves details for a specific exchange.
-- `getExchangeMarkets(id, quotes)`: Gets all markets for a specific exchange.
-
-### FiatsService
-Used to get fiat currency data.
-- `getFiats()`: Lists all supported fiat currencies.
+- [`getExchanges(quotes)`](/api-reference/exchanges/list-exchanges): Lists all exchanges.
+- [`getExchange(id, quotes)`](/api-reference/exchanges/get-exchange-by-id): Retrieves details for a specific exchange.
+- [`getExchangeMarkets(id, quotes)`](/api-reference/exchanges/list-an-exchange-markets): Gets all markets for a specific exchange.
 
 ### GlobalStatsService
 Used to get global market data.
-- `getGlobalStats(quotes)`: Retrieves global cryptocurrency market statistics.
-
-### NewsService
-Used to fetch crypto news.
-- `getNews(limit)`: Gets the latest news articles.
+- [`getGlobalStats(quotes)`](/api-reference/global/get-market-overview-data): Retrieves global cryptocurrency market statistics.
 
 ### PeopleService
 Used to get information about people in the crypto space.
-- `getPerson(id)`: Retrieves details for a specific person by ID.
-
-### RankingsService
-Used to get ranking data.
-- `getRankings(name, quotes)`: Retrieves various rankings (e.g., top coin movers).
+- [`getPerson(id)`](/api-reference/people/get-person-by-id): Retrieves details for a specific person by ID.
 
 ### SearchService
 Used to perform searches.
-- `search(query, categories, page, limit)`: Searches for coins, exchanges, people, and more.
+- [`search(...)`](/api-reference/tools/search): Searches for coins, exchanges, people, and more.
 
 ### TagsService
 Used to get information about tags.
-- `getTags(sortBy)`: Lists all tags.
-- `getTag(id)`: Retrieves details for a specific tag.
+- [`getTags(sortBy)`](/api-reference/tags/list-tags): Lists all tags.
+- [`getTag(id)`](/api-reference/tags/get-tag-by-id): Retrieves details for a specific tag.
 
 ### TickersService
 Used to fetch ticker price and market data.
-- `getTicker(id, quotes)`: Retrieves the ticker for a specific coin ID.
-- `getTickers(quotes, page)`: Lists tickers for all coins.
+- [`getTicker(id, quotes)`](/api-reference/tickers/get-ticker-for-a-specific-coin): Retrieves the ticker for a specific coin ID.
+- [`getTickers(quotes, page)`](/api-reference/tickers/get-tickers-for-all-active-coins): Lists tickers for all coins.
 
 ## Error Handling
 

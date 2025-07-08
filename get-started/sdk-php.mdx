@@ -193,35 +193,31 @@ try {
 
 ## Available Methods
 
-### `getGlobalStats(): GlobalStats`
-Get global market overview.
+### Global
+- [`getGlobalStats()`](/api-reference/global/get-market-overview-data) - Get global market overview.
 
-### `getTickers(): array`
-Get tickers for all coins.
+### Coins
+- [`getCoins()`](/api-reference/coins/list-coins) - List all active coins.
+- [`getTokenMeta(string $id)`](/api-reference/coins/get-coin-by-id) - Get metadata for a specific token.
 
-### `getTickerByCoinId(string $id): Ticker`
-Get a specific ticker by coin ID (e.g., `'btc-bitcoin'`).
+### Tickers
+- [`getTickers()`](/api-reference/tickers/get-tickers-for-all-active-coins) - Get tickers for all coins.
+- [`getTickerByCoinId(string $id)`](/api-reference/tickers/get-ticker-for-a-specific-coin) - Get a specific ticker by coin ID.
+- [`getHistoricalTickerByCoinId(string $id, string $start, string $interval)`](/api-reference/tickers/get-historical-ticks-for-a-specific-coin) - Get historical ticker data.
 
-### `getHistoricalTickerByCoinId(string $id, string $start, string $interval): array`
-Get historical ticker data for a coin. **(Pro API Key Required)**
+### Exchanges
+- [`getExchanges()`](/api-reference/exchanges/list-exchanges) - List all exchanges.
+- [`getExchangeById(string $id)`](/api-reference/exchanges/get-exchange-by-id) - Get a specific exchange.
+- [`getExchangeMarkets(string $id)`](/api-reference/exchanges/list-an-exchange-markets) - Get markets for an exchange.
 
-### `getCoins(): array`
-List all active coins.
+### Tools
+- [`search(string $query, array $categories = null, int $limit = null)`](/api-reference/tools/search) - Search across coins, exchanges, etc.
+- [`priceConverter(string $baseId, string $quoteId, float $amount)`](/api-reference/tools/price-converter) - Convert between currencies.
 
-### `getIcos(array $parameters = []): array`
-Get a list of ICOs.
-
-### `getOHLCV(string $id, string $interval): OHLCV`
-Get the latest OHLCV data for a coin.
-
-### `getTokenMeta(string $id): CoinMeta`
-Get metadata for a specific token (e.g., links, whitepaper).
-
-### `search(string $query, array $categories = null, int $limit = null): Search`
-Search across coins, exchanges, ICOs, people, and tags.
-
-### `setApiKey(string $apiKey)`
-Set the API key after client initialization.
+### Other
+- `getIcos(array $parameters = [])` - Get a list of ICOs.
+- `setApiKey(string $apiKey)` - Set the API key after client initialization.
+- [`getOHLCV(string $id, string $interval)`](/api-reference/coins/get-historical-ohlc) - Get the latest OHLCV data.
 
 ## Examples Repository
 

@@ -206,20 +206,24 @@ handleErrors();
 ## Available Methods
 
 ### `getGlobal()`
-Get global market overview.
+- **Description:** [Get global market overview.](/api-reference/global/get-market-overview-data)
 
 ### `getCoins()`
-List all coins available on Coinpaprika.
+- **Description:** [List all coins available on Coinpaprika.](/api-reference/coins/list-coins)
 
 ### `getCoin(coinId)`
-Get a specific coin by its ID (e.g., `'btc-bitcoin'`).
+- **Description:** [Get a specific coin by its ID.](/api-reference/coins/get-coin-by-id)
+- **`coinId`**: e.g., `'btc-bitcoin'`
 
 ### `getAllTickers(options)`
-Get tickers for all coins or a specific coin.
+- **Description:** [Get tickers for all coins or a specific coin.](/api-reference/tickers/get-tickers-for-all-active-coins)
 - **`options`** `(Object)`:
   - **`coinId`** `(String)`: ID of a specific coin.
-  - **`quotes`** `(Array<String>)`: An array of quote currencies to return (e.g., `['USD', 'BTC']`).
-  - **`historical`** `(Object)`: Object for historical ticker data.
+  - **`quotes`** `(Array<String>)`: Quote currencies (e.g., `['USD', 'BTC']`).
+
+### `getAllTickers({ historical })`
+- **Description:** [Get historical ticker data.](/api-reference/tickers/get-historical-ticks-for-a-specific-coin)
+- **`historical`** `(Object)`:
     - **`start`** `(String)`: Required. Start date (e.g., `'2023-01-01'`).
     - **`end`** `(String)`: Optional. End date.
     - **`limit`** `(Number)`: Optional. Data points limit.
@@ -227,15 +231,12 @@ Get tickers for all coins or a specific coin.
     - **`interval`** `(String)`: Optional. Time interval (e.g., `'1h'`).
 
 ### `getCoinsOHLCVHistorical(options)`
-Get historical OHLCV data for a coin.
+- **Description:** [Get historical OHLCV data for a coin.](/api-reference/coins/get-historical-ohlc)
 - **`options`** `(Object)**:
   - **`coinId`** `(String)`: Required. ID of a specific coin.
   - **`quote`** `(String)`: Optional. Quote currency (defaults to `'usd'`).
   - **`start`** `(String)`: Required. Start date.
   - **`end`** `(String)`: Optional. End date.
-
-### `getTicker(options)`
-DEPRECATED. Get information on all tickers or a specified ticker.
 
 ## Requirements
 

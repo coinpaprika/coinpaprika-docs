@@ -58,19 +58,33 @@
                 "get-started/sdk-php",
                 "get-started/sdk-go",
                 "get-started/sdk-kotlin",
-                "get-started/sdk-swift"
+                "get-started/sdk-swift",
+                "get-started/sdk-rust"
               ]
             }
           ]
         },
       {
         "tab": "REST API",
-        "openapi": "api-reference/openapi.yml",
+        "openapi": "api-reference/rest-api/openapi.yml",
         "groups": [
           {
             "group": "Getting Started",
             "pages": [
-              "api-reference/introduction"
+              "api-reference/rest-api/introduction"
+            ]
+          }
+        ]
+      },
+      {
+        "tab": "Streaming API",
+        "asyncapi": "api-reference/streaming-api/asyncapi.yml",
+        "groups": [
+          {
+            "group": "Websockets",
+            "pages": [
+              "api-reference/streaming-api/streaming-introduction",
+              "api-reference/streaming-api/pages/test"
             ]
           }
         ]
@@ -116,19 +130,23 @@
   "logo": {
     "light": "/logo/api_logo.svg",
     "dark": "/logo/api_logo.svg",
-    "href": "https://coinpaprika.com"
+    "href": "https://docs.coinpaprika.com"
   },
   "navbar": {
     "links": [
       {
         "label": "Support",
-        "href": "mailto:support@coinpaprika.com"
+        "href": "https://coinpaprika.com/contact/"
+      },
+      {
+        "label": "Visit CoinPaprika",
+        "href": "https://coinpaprika.com/"
       }
     ],
     "primary": {
       "type": "button",
-      "label": "Visit CoinPaprika",
-      "href": "https://coinpaprika.com/"
+      "label": "API Dashboard",
+      "href": "https://coinpaprika.com/api/panel/"
     }
   },
   "footer": {

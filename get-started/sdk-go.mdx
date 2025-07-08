@@ -378,35 +378,42 @@ func main() {
 
 ## Available Methods
 
-### Global Data
-- `Global.Get()` - Get global market overview
+The Go SDK is organized into services that correspond to the API endpoints.
+
+### Global
+- [`client.Global.Get()`](/api-reference/global/get-market-overview-data) - Get global market data.
 
 ### Coins
-- `Coins.List()` - List all coins
-- `Coins.GetByID(coinID)` - Get coin by ID
-- `Coins.GetTwitterTimelineByCoinID(coinID)` - Get coin's Twitter timeline
-- `Coins.GetEventsByCoinID(coinID)` - Get coin events
-- `Coins.GetMarketsByCoinID(coinID)` - Get coin markets
-- `Coins.GetHistoricalOHLCVByCoinID(coinID, options)` - Get historical OHLCV data (Pro)
+- [`client.Coins.List()`](/api-reference/coins/list-coins) - List all coins.
+- [`client.Coins.GetByID(coinID)`](/api-reference/coins/get-coin-by-id) - Get a specific coin by ID.
+- [`client.Coins.GetEventsByCoinID(coinID)`](/api-reference/coins/get-coin-events-by-coin-id) - Get events for a coin.
+- [`client.Coins.GetExchangesByCoinID(coinID)`](/api-reference/coins/get-exchanges-by-coin-id) - Get exchanges for a coin.
+- [`client.Coins.GetMarketsByCoinID(coinID)`](/api-reference/coins/get-markets-by-coin-id) - Get markets for a coin.
+- [`client.Coins.GetTwitterByCoinID(coinID)`](/api-reference/coins/get-twitter-timeline-tweets-for-a-coin) - Get Twitter timeline for a coin.
+- [`client.Coins.GetOHLCVLastFullDayByCoinID(coinID)`](/api-reference/coins/get-ohlc-for-the-last-full-day) - Get OHLCV for the last full day.
+- [`client.Coins.GetOHLCVHistorical(coinID, options)`](/api-reference/coins/get-historical-ohlc) - Get historical OHLCV.
+- [`client.Coins.GetOHLCVTodayByCoinID(coinID)`](/api-reference/coins/get-today-ohlc) - Get today's OHLCV.
+
+### People
+- [`client.People.GetByID(personID)`](/api-reference/people/get-person-by-id) - Get a person by ID.
+
+### Tags
+- [`client.Tags.List(options)`](/api-reference/tags/list-tags) - List all tags.
+- [`client.Tags.GetByID(tagID, options)`](/api-reference/tags/get-tag-by-id) - Get a tag by ID.
 
 ### Tickers
-- `Tickers.List(options)` - Get all tickers
-- `Tickers.GetByID(coinID, options)` - Get specific ticker
-- `Tickers.GetHistoricalTickersByID(coinID, options)` - Get historical tickers (Pro)
+- [`client.Tickers.List(options)`](/api-reference/tickers/get-tickers-for-all-active-coins) - Get tickers for all coins.
+- [`client.Tickers.GetByCoinID(coinID, options)`](/api-reference/tickers/get-ticker-for-a-specific-coin) - Get ticker for a specific coin.
+- [`client.Tickers.GetHistoricalByCoinID(coinID, options)`](/api-reference/tickers/get-historical-ticks-for-a-specific-coin) - Get historical ticks.
 
 ### Exchanges
-- `Exchanges.List(options)` - List all exchanges
-- `Exchanges.GetByID(exchangeID, options)` - Get exchange by ID
-- `Exchanges.GetMarketsByExchangeID(exchangeID, options)` - Get exchange markets
+- [`client.Exchanges.List(options)`](/api-reference/exchanges/list-exchanges) - List all exchanges.
+- [`client.Exchanges.GetByID(exchangeID)`](/api-reference/exchanges/get-exchange-by-id) - Get a specific exchange.
+- [`client.Exchanges.GetMarketsByExchangeID(exchangeID, options)`](/api-reference/exchanges/list-an-exchange-markets) - Get markets for an exchange.
 
-### People & Tags
-- `People.GetByID(personID)` - Get person by ID
-- `Tags.List(options)` - List tags
-- `Tags.GetByID(tagID, options)` - Get tag by ID
-
-### Search & Tools
-- `Search.Search(options)` - Search coins, exchanges, people
-- `PriceConverter.PriceConverter(options)` - Convert between currencies
+### Tools
+- [`client.Tools.Search(query, options)`](/api-reference/tools/search) - Search for assets.
+- [`client.Tools.PriceConverter(options)`](/api-reference/tools/price-converter) - Convert between currencies.
 
 ## Examples Repository
 

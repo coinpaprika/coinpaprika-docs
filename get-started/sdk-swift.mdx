@@ -213,35 +213,34 @@ func getMarketData() async {
 ## Available Methods
 
 ### Global Data
-- `global()` - Get global market overview.
+- [`global()`](/api-reference/global/get-market-overview-data) - Get global market overview.
 
 ### Coins
-- `coins(additionalFields:)` - List all coins.
-- `coin(id:)` - Get coin by ID.
-- `coinTwitter(id:)` - Get a coin's Twitter timeline.
-- `coinEvents(id:)` - Get coin events.
-- `coinExchanges(id:)` - Get exchanges for a coin.
-- `coinMarkets(id:quotes:)` - Get markets for a coin.
-- `createEvent(...)` - Create a new event for a coin.
+- [`coins(additionalFields:)`](/api-reference/coins/list-coins) - List all coins.
+- [`coin(id:)`](/api-reference/coins/get-coin-by-id) - Get coin by ID.
+- [`coinTwitter(id:)`](/api-reference/coins/get-twitter-timeline-tweets-for-a-coin) - Get a coin's Twitter timeline.
+- [`coinEvents(id:)`](/api-reference/coins/get-coin-events-by-coin-id) - Get coin events.
+- [`coinExchanges(id:)`](/api-reference/coins/get-exchanges-by-coin-id) - Get exchanges for a coin.
+- [`coinMarkets(id:quotes:)`](/api-reference/coins/get-markets-by-coin-id) - Get markets for a coin.
 
 ### Tickers
-- `tickers(quotes:page)` - Get all tickers, with optional pagination.
-- `ticker(id:quotes:)` - Get a specific ticker.
-- `historicalTicks(id:start:end:limit:interval:quote:)` - Get historical tickers. **(Pro API Required)**
+- [`tickers(quotes:page)`](/api-reference/tickers/get-tickers-for-all-active-coins) - Get all tickers, with optional pagination.
+- [`ticker(id:quotes:)`](/api-reference/tickers/get-ticker-for-a-specific-coin) - Get a specific ticker.
+- [`historicalTicks(...)`](/api-reference/tickers/get-historical-ticks-for-a-specific-coin) - Get historical tickers.
 
 ### Exchanges
-- `exchanges(quotes:)` - List all exchanges.
-- `exchange(id:quotes:)` - Get an exchange by ID.
-- `exchangeMarkets(id:quotes:)` - Get markets for an exchange.
+- [`exchanges(quotes:)`](/api-reference/exchanges/list-exchanges) - List all exchanges.
+- [`exchange(id:quotes:)`](/api-reference/exchanges/get-exchange-by-id) - Get an exchange by ID.
+- [`exchangeMarkets(id:quotes:)`](/api-reference/exchanges/list-an-exchange-markets) - Get markets for an exchange.
 
 ### People & Tags
-- `person(id:)` - Get a person by ID.
-- `tags(additionalFields:)` - List all tags.
-- `tag(id:additionalFields:)` - Get a tag by ID.
+- [`person(id:)`](/api-reference/people/get-person-by-id) - Get a person by ID.
+- [`tags(additionalFields:)`](/api-reference/tags/list-tags) - List all tags.
+- [`tag(id:additionalFields:)`](/api-reference/tags/get-tag-by-id) - Get a tag by ID.
 
 ### Search & Tools
-- `search(query:categories:limit:)` - Search across categories.
-- `priceConverter(baseCurrencyId:quoteCurrencyId:amount:)` - Convert between currencies.
+- [`search(...)`](/api-reference/tools/search) - Search across categories.
+- [`priceConverter(...)`](/api-reference/tools/price-converter) - Convert between currencies.
 
 ## Requirements
 

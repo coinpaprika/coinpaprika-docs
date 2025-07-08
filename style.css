@@ -61,3 +61,18 @@ div.w-full.relative.flex.flex-col .pricing-table td:last-child {
 .no-wrap-row td {
   white-space: nowrap;
 }
+
+/* Custom styles for the promotional card on the homepage */
+a.card.promo-card {
+  background: linear-gradient(to right, #2a080c, #4f0f16) !important;
+  border: 1px solid #ce0017 !important;
+}
+
+a.card.promo-card:hover {
+  background: linear-gradient(to right, #3a0c11, #5f131b) !important;
+}
+
+a.card.promo-card .title,
+a.card.promo-card .description {
+    color: white !important;
+}

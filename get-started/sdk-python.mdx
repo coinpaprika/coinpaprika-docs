@@ -238,38 +238,39 @@ except CoinpaprikaAPIException as e:
 ## Available Methods
 
 ### Global Data
-- `global_market()` - Get global market overview.
+- [`global_market()`](/api-reference/global/get-market-overview-data) - Get global market overview.
 
 ### Coins
-- `coins()` - List all coins.
-- `coin(coin_id)` - Get details for a specific coin.
-- `twitter(coin_id)` - Get a coin's Twitter timeline.
-- `events(coin_id)` - Get a coin's events.
-- `exchanges(coin_id)` - Get exchanges for a specific coin.
-- `markets(coin_id, **params)` - Get market data for a specific coin.
-- `candle(coin_id, **params)` - Get the latest OHLCV data for a coin.
-- `ohlcv(coin_id, **params)` - Get historical OHLCV data. **(Pro API Key Required)**
-- `candles(coin_id, **params)` - (DEPRECATED) Alias for `ohlcv()`.
-- `today(coin_id, **params)` - (DEPRECATED) Get today's OHLC data.
+- [`coins()`](/api-reference/coins/list-coins) - List all coins.
+- [`coin(coin_id)`](/api-reference/coins/get-coin-by-id) - Get details for a specific coin.
+- [`twitter(coin_id)`](/api-reference/coins/get-twitter-timeline-tweets-for-a-coin) - Get a coin's Twitter timeline.
+- [`events(coin_id)`](/api-reference/coins/get-coin-events-by-coin-id) - Get a coin's events.
+- [`exchanges(coin_id)`](/api-reference/coins/get-exchanges-by-coin-id) - Get exchanges for a specific coin.
+- [`markets(coin_id, **params)`](/api-reference/coins/get-markets-by-coin-id) - Get market data for a specific coin.
+- [`candle(coin_id, **params)`](/api-reference/coins/get-ohlc-for-the-last-full-day) - Get the latest OHLCV data for a coin.
+- [`historical(coin_id, **params)`](/api-reference/coins/get-historical-ohlc) - Get historical OHLCV data.
+- [`today(coin_id)`](/api-reference/coins/get-today-ohlc) - Get today's OHLC data.
+
+### People
+- [`people(person_id)`](/api-reference/people/get-person-by-id) - Get person by ID.
+
+### Tags
+- [`tags(sort_by)`](/api-reference/tags/list-tags) - List tags.
+- [`tag(tag_id)`](/api-reference/tags/get-tag-by-id) - Get tag by ID.
 
 ### Tickers
-- `tickers(**params)` - Get tickers for all coins.
-- `ticker(coin_id, **params)` - Get the ticker for a specific coin.
-- `historical(coin_id, **params)` - Get historical ticker data. **(Pro API Key Required)**
+- [`tickers()`](/api-reference/tickers/get-tickers-for-all-active-coins) - Get tickers for all coins.
+- [`ticker(coin_id)`](/api-reference/tickers/get-ticker-for-a-specific-coin) - Get ticker for a specific coin.
+- [`historical_ticker(coin_id, **params)`](/api-reference/tickers/get-historical-ticks-for-a-specific-coin) - Get historical ticks.
 
 ### Exchanges
-- `exchange_list(**params)` - List all exchanges.
-- `exchange(exchange_id, **params)` - Get details for a specific exchange.
-- `exchange_markets(exchange_id, **params)` - Get markets for a specific exchange.
+- [`exchange_list()`](/api-reference/exchanges/list-exchanges) - List all exchanges.
+- [`exchange(exchange_id, **params)`](/api-reference/exchanges/get-exchange-by-id) - Get a specific exchange.
+- [`exchange_markets(exchange_id, **params)`](/api-reference/exchanges/list-an-exchange-markets) - Get exchange markets.
 
-### People & Tags
-- `people(person_id)` - Get details for a specific person.
-- `tags(**params)` - List all tags.
-- `tag(tag_id, **params)` - Get details for a specific tag.
-
-### Search & Tools
-- `search(**params)` - Search across coins, exchanges, people, etc.
-- `price_converter(**params)` - Convert between currencies.
+### Tools
+- [`search(q, **params)`](/api-reference/tools/search) - Search for coins, exchanges, etc.
+- [`price_converter(**params)`](/api-reference/tools/price-converter) - Convert between currencies.
 
 ## Requirements
 

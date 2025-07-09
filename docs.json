@@ -83,8 +83,7 @@
           {
             "group": "Websockets",
             "pages": [
-              "api-reference/streaming-api/streaming-introduction",
-              "api-reference/streaming-api/pages/test"
+              "api-reference/streaming-api/streaming-introduction"
             ]
           }
         ]

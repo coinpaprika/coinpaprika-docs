@@ -21,33 +21,57 @@ servers:
     description: Production api with ticker data
     security:
       - $ref: '#/components/securitySchemes/ApiKeyAuth'
+    tags:
+      - name: Subscriptions
+        description: Operations and messages for managing data subscriptions.
+      - name: Connection
+        description: Operations and messages for managing the WebSocket connection.
+      - name: Market Data
+        description: Operations and messages related to receiving market data.
 channels:
   /ticks:
     address: /ticks
     messages:
-      sendMessage.message:
+      operation:
         $ref: '#/components/messages/operation'
-      processMessage.message.0:
+      currency:
         $ref: '#/components/messages/currency'
-      processMessage.message.1:
+      ping:
+        $ref: '#/components/messages/ping'
+      pong:
         $ref: '#/components/messages/pong'
     description: WebSocket channel for cryptocurrency ticker data
 operations:
-  sendMessage:
+  subscribe:
     action: receive
     channel:
       $ref: '#/channels/~1ticks'
-    summary: Send messages to the API
+    summary: Subscribe or unsubscribe to topics.
     messages:
-      - $ref: '#/channels/~1ticks/messages/sendMessage.message'
-  processMessage:
+      - $ref: '#/channels/~1ticks/messages/operation'
+    tags:
+      - name: Subscriptions
+  ping:
+    action: receive
+    channel:
+      $ref: '#/channels/~1ticks'
+    summary: Ping server to determine whether connection is alive.
+    messages:
+      - $ref: '#/channels/~1ticks/messages/ping'
+    reply:
+      messages:
+        - $ref: '#/channels/~1ticks/messages/pong'
+    tags:
+      - name: Connection
+  receiveCurrencyUpdate:
     action: send
     channel:
       $ref: '#/channels/~1ticks'
-    summary: Messages that you receive from the API
+    summary: Receive currency data updates.
     messages:
-      - $ref: '#/channels/~1ticks/messages/processMessage.message.0'
-      - $ref: '#/channels/~1ticks/messages/processMessage.message.1'
+      - $ref: '#/channels/~1ticks/messages/currency'
+    tags:
+      - name: Market Data
 components:
   securitySchemes:
     ApiKeyAuth:
@@ -72,26 +96,32 @@ components:
             quotes:
               - BTC
               - USD
+      tags:
+        - name: Subscriptions
     currency:
       name: currency
       title: Currency data
       contentType: application/json
       payload:
         $ref: '#/components/schemas/currency'
+      tags:
+        - name: Market Data
     ping:
       name: ping
       title: Ping server to determine whether connection is alive
       contentType: application/json
       payload:
         $ref: '#/components/schemas/ping'
-      x-response:
-        $ref: '#/components/messages/pong'
+      tags:
+        - name: Connection
     pong:
       name: pong
       title: Pong is a response to ping message
       contentType: application/json
       payload:
         $ref: '#/components/schemas/pong'
+      tags:
+        - name: Connection
   schemas:
     operation:
       type: object

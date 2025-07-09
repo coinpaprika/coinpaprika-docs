@@ -15,10 +15,14 @@ info:
     name: Apache 2.0
 servers:
   public:
-    host: streaming.coinpaprika.com
-    pathname: /ticks
+    host: '{protocol}://streaming.coinpaprika.com{pathname}'
     protocol: wss
     description: Production api with ticker data
+    variables:
+      protocol:
+        default: wss
+      pathname:
+        default: /ticks
     security:
       - $ref: '#/components/securitySchemes/ApiKeyAuth'
     tags:

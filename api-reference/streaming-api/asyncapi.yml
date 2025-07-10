@@ -3,13 +3,11 @@ info:
   title: CoinPaprika Streaming API
   version: 1.0.0
   description: >
-    The CoinPaprika async API for real-time cryptocurrency ticker data.
-
-
-    Connect to our WebSocket endpoint to receive live price updates for
-    cryptocurrencies.
+    The CoinPaprika async API for high-frequency crypto updates for cryptocurrencies.
+    Connect to our WebSocket endpoint to receive live price updates for cryptocurrencies.
+    This API is designed for high-frequency trading, algorithmic trading, and low-latency market analysis.
   contact:
-    url: 'https://coinpaprika.com'
+    url: 'https://coinpaprika.com/contact/'
     email: support@coinpaprika.com
   license:
     name: Apache 2.0

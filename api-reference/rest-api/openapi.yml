@@ -22,6 +22,7 @@ info:
     | Starter    | https://api-pro.coinpaprika.com/v1/ |
     | Pro        | https://api-pro.coinpaprika.com/v1/ |
     | Business   | https://api-pro.coinpaprika.com/v1/ |
+    | Ultimate   | https://api-pro.coinpaprika.com/v1/ |
     | Enterprise | https://api-pro.coinpaprika.com/v1/ |
 
     # Authentication
@@ -60,9 +61,10 @@ info:
       | Plan       | Calls/month                         |
       |------------|-------------------------------------|
       | Free       | 20 000 |
-      | Starter    | 200 000 |
-      | Pro        | 500 000 |
-      | Business   | 3 000 000 |
+      | Starter    | 400 000 |
+      | Pro        | 1 000 000 |
+      | Business   | 5 000 000 |
+      | Ultimate   | 10 000 000 |
       | Enterprise | No limits |
 
     # API Clients
@@ -1001,7 +1003,7 @@ paths:
         Returns simplified ticker information (`id`, `name`, `symbol`, `rank`, `price`) for all active
         cryptocurrencies.
 
-        This is a lightweight alternative to `/tickers` — it returns only essential fields,
+        This is a lighter counterpart to `/tickers`. It returns only essential fields,
         making it ideal for dashboards, watchlists, and high-frequency polling.
 
         **Available on the following API plans:**

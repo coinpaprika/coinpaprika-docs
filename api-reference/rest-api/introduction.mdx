@@ -34,10 +34,16 @@ The CoinPaprika API provides extensive and reliable data for over 50,000 crypto 
 
 ## Base URL
 
-All API endpoints use the following base URL:
+All **free plan** API endpoints use the following base URL:
 
 ```
 https://api.coinpaprika.com/v1
+```
+
+For the **paid plans**, the base URL is:
+
+```
+https://api-pro.coinpaprika.com/v1
 ```
 
 ## Authentication
@@ -48,11 +54,25 @@ Most of our API endpoints are available without an API key. However, for higher 
   Authentication may be required for certain endpoints in the future as we expand our services.
 </Note>
 
-To authenticate, include your API key as a Bearer token in the `Authorization` header of your request:
+To authenticate, pass your API key in the `Authorization` header:
 
 ```bash
-curl -H "Authorization: Bearer YOUR_API_KEY" "https://api.coinpaprika.com/v1/users/me"
+curl -H "Authorization: YOUR_API_KEY" "https://api-pro.coinpaprika.com/v1/key/info"
 ```
+
+A successful response returns JSON with your plan, status, and remaining monthly quota.
+
+<Warning>
+  The key is the entire header value. There is no `Bearer` prefix, and no other
+  scheme word: `Authorization: Bearer YOUR_API_KEY` does not reach the API. Most
+  APIs expect the opposite, so if your HTTP client has a "bearer token" field, set
+  a raw header instead.
+</Warning>
+
+<Warning>
+  The URL for the paid plans is different from the free plan. Check out our [pricing page](/api-plans) for specific details.
+</Warning>
+
 <Tip>You can get your API Key by visiting our official website [here](https://coinpaprika.com/api/)</Tip>
 
 ## Rate limits

@@ -1,6 +1,6 @@
 openapi: 3.1.0
 info:
-  version: 1.7.12
+  version: 1.7.13
   title: Coinpaprika API
   license:
     name: MIT
@@ -621,6 +621,8 @@ paths:
       description: |
         Returns Open/High/Low/Close values with volume and market capitalization for the last full day.
 
+        On Business, Ultimate and Enterprise plans each entry also includes `circulating_supply`: the circulating supply implied by the entry, calculated as `market_cap / close` in USD (an approximation, not a recorded supply value). The field is omitted on other plans and when market cap or price is missing.
+
         **Available on the following API plans:**
         - Free
         - Starter
@@ -668,6 +670,8 @@ paths:
       operationId: getCoinOHLCVHistorical
       description: |
         Returns Open/High/Low/Close values with volume and market capitalization for any date range. If the `end` date is the current day, data can change with every request until actual close of the day at 23:59:59"
+
+        On Business, Ultimate and Enterprise plans each entry also includes `circulating_supply`: the circulating supply implied by the entry, calculated as `market_cap / close` in USD (an approximation, not a recorded supply value). The field is omitted on other plans and when market cap or price is missing.
 
         **Available on the following API plans:**
         - Free
@@ -757,6 +761,8 @@ paths:
       operationId: getCoinOHLCVToday
       description: |
         Returns Open/High/Low/Close values with volume and market capitalization for the current day. Data can change every each request until actual close of the day at 23:59:59.
+
+        On Business, Ultimate and Enterprise plans each entry also includes `circulating_supply`: the circulating supply implied by the entry, calculated as `market_cap / close` in USD (an approximation, not a recorded supply value). The field is omitted on other plans and when market cap or price is missing.
 
         **Available on the following API plans:**
         - Free
@@ -1146,7 +1152,9 @@ paths:
       security: []
       summary: Get historical ticks for a specific coin
       description: |
-        Returns historical values of `price`, `volume_24h`, `market_cap` for a given cryptocurrency on coinpaprika.com:
+        Returns historical values of `price`, `volume_24h`, `market_cap` for a given cryptocurrency on coinpaprika.com.
+
+        On Business, Ultimate and Enterprise plans each entry also includes `circulating_supply`: the circulating supply implied by the entry, calculated as `market_cap / price` in USD (an approximation, not a recorded supply value). For intervals of `15m` and longer it reflects averaged data. The field is omitted on other plans and when market cap or price is missing.
 
         **Available history range depending on the selected API plan:**
 
@@ -2319,6 +2327,10 @@ components:
           type: integer
           example: 83808161204
           nullable: true
+        circulating_supply:
+          type: integer
+          example: 96087000
+          description: Circulating supply implied by the entry (`market_cap / close` in USD); an approximation, not a recorded supply value. Returned only on Business, Ultimate and Enterprise plans, omitted when market cap or price is missing.
     link_with_followers:
       type: object
       properties:
@@ -2625,6 +2637,10 @@ components:
         market_cap:
           type: integer
           example: 83761787514
+        circulating_supply:
+          type: integer
+          example: 97906000
+          description: Circulating supply implied by the entry (`market_cap / price` in USD); an approximation, not a recorded supply value. Returned only on Business, Ultimate and Enterprise plans, omitted when market cap or price is missing.
     historical_ticks:
       type: array
       description: Historical tick response.
